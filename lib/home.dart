@@ -8,6 +8,35 @@ class HomeScreen extends StatelessWidget {
     'assets/pozz.png',
     'assets/pozz.png',
   ];
+
+  final List<String> categoryList = [
+    'assets/freak.png',
+    'assets/blue_top.png',
+    'assets/kids.png',
+    'assets/black_dress.png',
+    'assets/white_shirt.png',
+  ];
+
+  final List<String> bestSellingList = [
+    'assets/freak.png',
+    'assets/white_shirt.png',
+  ];
+
+  final List<String> newArrivalList = [
+    'assets/pink_dress.png',
+    'assets/black_dress.png',
+  ];
+
+  final List<String> promotionList = [
+    'assets/glamour_tops.jpg',
+    'assets/fitted_tops.jpg',
+  ];
+
+  final Map<String, String> exploreList = {
+    "MEN": 'assets/red_shirt.jpg',
+    "WOMEN": 'assets/blue_top.png',
+    "KID": 'assets/kids.png',
+  }; 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +48,8 @@ class HomeScreen extends StatelessWidget {
             _buildHeader(context),
             _buildCategories(),
             _buildSection("Best Selling"),
-            _buildSection("New Arrival"),
-            _buildSection("Promotion"),
+            _buildSection1("New Arrival"),
+            _buildSection2("Promotion"),
             _buildExploreMore(),
           ],
         ),
@@ -123,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                       radius: 30,
                       child: ClipOval(
                         child: Image.asset(
-                          "assets/red_shirt.jpg",
+                          categoryList[index],
                           fit: BoxFit.cover,
                           width: 60,
                           height: 60,
@@ -172,7 +201,89 @@ class HomeScreen extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
-                      'assets/pozz.png',
+                      bestSellingList[index],
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              })
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSection1(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(title,
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text("See all", style: TextStyle(color: Colors.blue)),
+              ],
+            ),
+          ),
+          SizedBox(height: 8),
+          GridView.builder(
+              shrinkWrap: true,
+              itemCount: 2,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, mainAxisSpacing: 10),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      newArrivalList[index],
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              })
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSection2(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(title,
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text("See all", style: TextStyle(color: Colors.blue)),
+              ],
+            ),
+          ),
+          SizedBox(height: 8),
+          GridView.builder(
+              shrinkWrap: true,
+              itemCount: 2,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, mainAxisSpacing: 10),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      promotionList[index],
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -208,7 +319,7 @@ class HomeScreen extends StatelessWidget {
                     alignment: Alignment.bottomCenter,
                     children: [
                       Image.asset(
-                        'assets/pozz.png',
+                        exploreList[category]!,
                         width: double.infinity,
                         height: 150,
                         fit: BoxFit.cover,

@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
   final List<String> categories = ["Shirt", "Top", "Pants", "Kid", "Dress"];
+  final Map<String, String> categoryImages = {
+    "Shirt": "assets/men_shirt.jpg",
+    "Top": "assets/glamour_tops.jpg",
+    "Pants": "assets/pj.jpg",
+    "Kid": "assets/kids.png",
+    "Dress": "assets/black_dress.png",
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +41,6 @@ class SearchScreen extends StatelessWidget {
   Widget _buildSearchBar(BuildContext context) {
     return Row(
       children: [
-        
         Expanded(
           child: Container(
             decoration: BoxDecoration(
@@ -76,10 +82,11 @@ class SearchScreen extends StatelessWidget {
             child: ListTile(
               leading: CircleAvatar(
                 backgroundColor: Colors.grey.shade200,
-                backgroundImage: AssetImage("assets/pozz.png"), // Using pozz.png
+                backgroundImage: AssetImage(categoryImages[category]!),
               ),
               title: Text(category, style: TextStyle(fontSize: 16)),
-              trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
               onTap: () {
                 // Navigate to category page (if needed)
               },

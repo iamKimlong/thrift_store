@@ -28,9 +28,9 @@ class MyFavScreen extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            FavItem(imagePath: 'assets/pozz.png', price: "\$11.99"),
-            FavItem(imagePath: 'assets/pozz.png', price: "\$8.00"),
-            FavItem(imagePath: 'assets/pozz.png', price: "\$7.00"),
+            FavItem(imagePath: 'assets/glamour_tops.jpg', price: "\$11.99"),
+            FavItem(imagePath: 'assets/freak.png', price: "\$8.00"),
+            FavItem(imagePath: 'assets/blue_top.png', price: "\$7.00"),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {},

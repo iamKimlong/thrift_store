@@ -13,7 +13,15 @@ class _CartScreenState extends State<CartScreen> {
     {"price": 14.99, "quantity": 1},
   ];
 
-  double get subtotal => cartItems.fold(0, (sum, item) => sum + (item["price"] * item["quantity"]));
+  final List<String> cartList = [
+    'assets/glamour_tops.jpg',
+    'assets/blue_top.png',
+    'assets/freak.png',
+    'assets/fitted_tops.jpg',
+  ];
+
+  double get subtotal => cartItems.fold(
+      0, (sum, item) => sum + (item["price"] * item["quantity"]));
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +34,11 @@ class _CartScreenState extends State<CartScreen> {
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text("My Cart", style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold)),
+        title: Text("My Cart",
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
       body: Padding(
@@ -58,13 +70,18 @@ class _CartScreenState extends State<CartScreen> {
           borderRadius: BorderRadius.circular(12),
         ),
         child: ListTile(
-          leading: Image.asset("assets/pozz.png", width: 50, height: 50, fit: BoxFit.cover),
-          title: Text("\$${cartItems[index]["price"].toStringAsFixed(2)}", style: TextStyle(color: Colors.white, fontSize: 16)),
+          leading: Image.asset(cartList[index],
+              width: 50, height: 50, fit: BoxFit.cover),
+          title: Text("\$${cartItems[index]["price"].toStringAsFixed(2)}",
+              style: TextStyle(color: Colors.white, fontSize: 16)),
           trailing: _buildQuantityChanger(index),
         ),
       ),
     );
-  }
+  } 
+
+
+ 
 
   Widget _buildQuantityChanger(int index) {
     return Row(
@@ -80,7 +97,8 @@ class _CartScreenState extends State<CartScreen> {
             });
           },
         ),
-        Text("${cartItems[index]["quantity"]}", style: TextStyle(color: Colors.white, fontSize: 16)),
+        Text("${cartItems[index]["quantity"]}",
+            style: TextStyle(color: Colors.white, fontSize: 16)),
         IconButton(
           icon: Icon(Icons.add, color: Colors.white),
           onPressed: () {
@@ -106,14 +124,16 @@ class _CartScreenState extends State<CartScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Delivery Method :", style: TextStyle(color: Colors.white, fontSize: 14)),
+              Text("Delivery Method :",
+                  style: TextStyle(color: Colors.white, fontSize: 14)),
               DropdownButton<String>(
                 value: "Fast Delivery",
                 dropdownColor: Colors.brown,
                 icon: Icon(Icons.arrow_drop_down, color: Colors.white),
                 underline: SizedBox(),
                 style: TextStyle(color: Colors.white),
-                items: ["Fast Delivery", "Standard Delivery"].map((String method) {
+                items:
+                    ["Fast Delivery", "Standard Delivery"].map((String method) {
                   return DropdownMenuItem<String>(
                     value: method,
                     child: Text(method, style: TextStyle(color: Colors.white)),
@@ -133,7 +153,8 @@ class _CartScreenState extends State<CartScreen> {
                   hintText: "Apply Coupon",
                   filled: true,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8)),
                 ),
               ),
             ),
@@ -161,7 +182,8 @@ class _CartScreenState extends State<CartScreen> {
           _buildSummaryRow("SUBTOTAL :", "\$${subtotal.toStringAsFixed(2)}"),
           _buildSummaryRow("Delivery :", "\$0.00"),
           _buildSummaryRow("Coupon :", "\$0.00"),
-          _buildSummaryRow("TOTAL :", "\$${subtotal.toStringAsFixed(2)}", isTotal: true),
+          _buildSummaryRow("TOTAL :", "\$${subtotal.toStringAsFixed(2)}",
+              isTotal: true),
           SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {},
@@ -169,7 +191,11 @@ class _CartScreenState extends State<CartScreen> {
               backgroundColor: Colors.white,
               minimumSize: Size(double.infinity, 45),
             ),
-            child: Text("Checkout Now", style: TextStyle(color: Colors.brown, fontSize: 16, fontWeight: FontWeight.bold)),
+            child: Text("Checkout Now",
+                style: TextStyle(
+                    color: Colors.brown,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold)),
           ),
         ],
       ),
@@ -182,8 +208,16 @@ class _CartScreenState extends State<CartScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: TextStyle(color: Colors.white, fontSize: isTotal ? 16 : 14, fontWeight: isTotal ? FontWeight.bold : FontWeight.normal)),
-          Text(value, style: TextStyle(color: Colors.white, fontSize: isTotal ? 16 : 14, fontWeight: isTotal ? FontWeight.bold : FontWeight.normal)),
+          Text(title,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: isTotal ? 16 : 14,
+                  fontWeight: isTotal ? FontWeight.bold : FontWeight.normal)),
+          Text(value,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: isTotal ? 16 : 14,
+                  fontWeight: isTotal ? FontWeight.bold : FontWeight.normal)),
         ],
       ),
     );

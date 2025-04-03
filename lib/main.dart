@@ -31,8 +31,6 @@
 
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:thrift_store/dashboard.dart';
-import 'package:thrift_store/home.dart';
 import 'package:thrift_store/introduction.dart';
 
 void main() {
@@ -58,7 +56,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.brown,
         scaffoldBackgroundColor: Color(0xFFD6CBBE), // Beige background
       ),
-      home: BottomNavScreen(), // Run CreditCardScreen
+      home: IntroductionPage (), // Run CreditCardScreen
     );
   }
 }

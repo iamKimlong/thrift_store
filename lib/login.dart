@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thrift_store/dashboard.dart';
 import 'package:thrift_store/forgot_password.dart';
-import 'package:thrift_store/home.dart';
+
 
 import 'package:thrift_store/register.dart';
 
